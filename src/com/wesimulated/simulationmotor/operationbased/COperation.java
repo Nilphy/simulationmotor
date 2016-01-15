@@ -1,14 +1,9 @@
 package com.wesimulated.simulationmotor.operationbased;
 
-import com.wesimulated.simulation.Operation;
+public interface COperation {
 
+	public boolean testIfRequirementsAreMet();
 
-public abstract class COperation extends Operation 	{
+	public void doAction();
 
-	public abstract boolean testIfRequirementsAreMet();
-	public abstract int getPriority();
-	
-	public int getNegativePriority() {
-		return - getPriority();
-	}
 }
