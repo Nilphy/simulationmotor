@@ -3,9 +3,8 @@ package com.wesimulated.simulation;
 import java.time.Duration;
 import java.util.Date;
 
-public class Clock {
 
-	private static Clock instance;
+public class Clock {
 	
 	private Date date;
 	private Date startDate;
@@ -18,13 +17,6 @@ public class Clock {
 		this.startDate = new Date();
 	}
 	
-	public static Clock getInstance() {
-		if (instance == null) {
-			instance = new Clock();
-		}
-		return instance;
-	}
-
 	public boolean durationHasPassed(Duration duration) {
 		return date.getTime() - startDate.getTime() > duration.toMillis();
 	}

@@ -14,6 +14,7 @@ import com.wesimulated.simulation.runparameters.EndCodition;
 public class Excecutor extends BaseExcecutor {
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
+	private Clock clock;
 	
 	public Excecutor(EndCodition endCondition) {
 		super(endCondition);
@@ -62,7 +63,7 @@ public class Excecutor extends BaseExcecutor {
 
 	private Date futureEventsScan() {
 		Date nextEventTime = futureEventsList.iterator().next().getReActivationTime();
-		Clock.getInstance().advanceUntil(nextEventTime);
+		this.clock.advanceUntil(nextEventTime);
 		return nextEventTime;
 	}
 }	
