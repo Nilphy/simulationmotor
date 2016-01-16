@@ -21,12 +21,12 @@ import com.wesimulated.simulation.BaseExcecutor;
 import com.wesimulated.simulation.Clock;
 import com.wesimulated.simulation.runparameters.EndCodition;
 
-public class Excecutor extends BaseExcecutor {
+public class ProcessBasedExecutor extends BaseExcecutor {
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
 	private Clock clock;
 	
-	public Excecutor(EndCodition endCondition) {
+	public ProcessBasedExecutor(EndCodition endCondition) {
 		super(endCondition);
 		this.futureEventsList = new TreeSet<Entity>();
 		this.currentEventsList = new LinkedList<Entity>();
