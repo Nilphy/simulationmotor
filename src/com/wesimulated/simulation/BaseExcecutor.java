@@ -66,7 +66,6 @@ public abstract class BaseExcecutor {
 		this.continueSimulationMotorExecution();
 	}
 
-	// TODO: this has to be called from the clock when it requests time advance
 	public void pauseSimulationMotorExecution() throws InterruptedException {
 		this.hlaWait.acquire();
 	}
