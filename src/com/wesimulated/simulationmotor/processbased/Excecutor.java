@@ -35,9 +35,15 @@ public class Excecutor extends BaseExcecutor {
 
 	@Override
 	protected void doCicle() {
-		Date nextEventTime = this.futureEventsScan();
-		this.moveBetweenLists(nextEventTime);
-		this.currentEventsScan();
+		try {
+			Date nextEventTime = this.futureEventsScan();
+			this.moveBetweenLists(nextEventTime);
+			this.currentEventsScan();
+		} catch (LogicalTimeAlreadyPassed | InvalidLogicalTime | InTimeAdvancingState | RequestForTimeRegulationPending | RequestForTimeConstrainedPending | SaveInProgress | RestoreInProgress
+				| FederateNotExecutionMember | NotConnected | RTIinternalError | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void currentEventsScan() {
