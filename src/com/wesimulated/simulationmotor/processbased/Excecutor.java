@@ -21,7 +21,6 @@ import com.wesimulated.simulation.BaseExcecutor;
 import com.wesimulated.simulation.Clock;
 import com.wesimulated.simulation.runparameters.EndCodition;
 
-
 public class Excecutor extends BaseExcecutor {
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
