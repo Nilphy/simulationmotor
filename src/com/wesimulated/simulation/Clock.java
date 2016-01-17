@@ -1,16 +1,5 @@
 package com.wesimulated.simulation;
 
-import hla.rti1516e.exceptions.FederateNotExecutionMember;
-import hla.rti1516e.exceptions.InTimeAdvancingState;
-import hla.rti1516e.exceptions.InvalidLogicalTime;
-import hla.rti1516e.exceptions.LogicalTimeAlreadyPassed;
-import hla.rti1516e.exceptions.NotConnected;
-import hla.rti1516e.exceptions.RTIinternalError;
-import hla.rti1516e.exceptions.RequestForTimeConstrainedPending;
-import hla.rti1516e.exceptions.RequestForTimeRegulationPending;
-import hla.rti1516e.exceptions.RestoreInProgress;
-import hla.rti1516e.exceptions.SaveInProgress;
-
 import java.time.Duration;
 import java.util.Date;
 
@@ -38,7 +27,7 @@ public class Clock {
 		return this.date.equals(thisDate);
 	}
 
-	public void advanceUntil(Date newDate) throws InterruptedException, LogicalTimeAlreadyPassed, InvalidLogicalTime, InTimeAdvancingState, RequestForTimeRegulationPending, RequestForTimeConstrainedPending, SaveInProgress, RestoreInProgress, FederateNotExecutionMember, NotConnected, RTIinternalError {
+	public void advanceUntil(Date newDate) {
 		this.timeControllerEntity.requestTimeAdvance(newDate);
 		this.simulationMotor.pauseSimulationMotorExecution();
 	}

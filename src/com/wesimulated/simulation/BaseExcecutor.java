@@ -2,6 +2,8 @@ package com.wesimulated.simulation;
 
 import java.util.concurrent.Semaphore;
 
+import javax.management.RuntimeErrorException;
+
 import javafx.application.Platform;
 import hla.rti1516e.exceptions.FederateNotExecutionMember;
 import hla.rti1516e.exceptions.InTimeAdvancingState;
@@ -28,22 +30,15 @@ public abstract class BaseExcecutor {
 		this.hlaWait = new Semaphore(0);
 	}
 
-	protected abstract void doCicle() throws LogicalTimeAlreadyPassed, InvalidLogicalTime, InTimeAdvancingState, RequestForTimeRegulationPending, RequestForTimeConstrainedPending, SaveInProgress,
-			RestoreInProgress, FederateNotExecutionMember, NotConnected, RTIinternalError, InterruptedException;
+	protected abstract void doCicle();
 
-	public void run() throws LogicalTimeAlreadyPassed, InvalidLogicalTime, InTimeAdvancingState, RequestForTimeRegulationPending, RequestForTimeConstrainedPending, SaveInProgress, RestoreInProgress,
-			FederateNotExecutionMember, NotConnected, RTIinternalError, InterruptedException {
+	public void run() {
 		Platform.runLater(() -> {
-			try {
-				if (this.getClock() == null) {
-					this.pauseSimulationMotorExecution();
-				}
-				while (!this.isSimulationEnd()) {
-					this.doCicle();
-				}
-			} catch (LogicalTimeAlreadyPassed | InvalidLogicalTime | InTimeAdvancingState | RequestForTimeRegulationPending | RequestForTimeConstrainedPending | SaveInProgress | RestoreInProgress
-					| FederateNotExecutionMember | NotConnected | RTIinternalError | InterruptedException e) {
-				throw new RuntimeException(e);
+			if (this.getClock() == null) {
+				this.pauseSimulationMotorExecution();
+			}
+			while (!this.isSimulationEnd()) {
+				this.doCicle();
 			}
 		});
 	}
@@ -66,8 +61,12 @@ public abstract class BaseExcecutor {
 		this.continueSimulationMotorExecution();
 	}
 
-	public void pauseSimulationMotorExecution() throws InterruptedException {
-		this.hlaWait.acquire();
+	public void pauseSimulationMotorExecution() {
+		try {
+			this.hlaWait.acquire();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public void continueSimulationMotorExecution() {

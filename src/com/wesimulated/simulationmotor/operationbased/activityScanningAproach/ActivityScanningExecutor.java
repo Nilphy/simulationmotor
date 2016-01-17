@@ -24,7 +24,7 @@ public class ActivityScanningExecutor extends OperationBasedExecutor {
 	}
 
 	@Override
-	protected void doCicle() throws LogicalTimeAlreadyPassed, InvalidLogicalTime, InTimeAdvancingState, RequestForTimeRegulationPending, RequestForTimeConstrainedPending, SaveInProgress, RestoreInProgress, FederateNotExecutionMember, NotConnected, RTIinternalError, InterruptedException {
+	protected void doCicle() {
 		this.execAPhase();
 		this.execCPhase();
 	}
