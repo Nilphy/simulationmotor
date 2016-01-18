@@ -33,14 +33,14 @@ public abstract class BaseExcecutor {
 	protected abstract void doCicle();
 
 	public void run() {
-		Platform.runLater(() -> {
+		new Thread(() -> {
 			if (this.getClock() == null) {
 				this.pauseSimulationMotorExecution();
 			}
 			while (!this.isSimulationEnd()) {
 				this.doCicle();
 			}
-		});
+		}).start();
 	}
 
 	public boolean isSimulationEnd() {
