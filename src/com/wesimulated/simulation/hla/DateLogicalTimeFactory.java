@@ -14,7 +14,7 @@ import net.sf.ohla.rti.i18n.I18n;
 public class DateLogicalTimeFactory implements LogicalTimeFactory<DateLogicalTime, DateLogicalTimeInterval> {
 
 	private static final long serialVersionUID = -8195547672920977871L;
-	private final static String NAME = "HLADateTime";
+	public final static String NAME = "DateLogicalTime";
 
 	@Override
 	public DateLogicalTimeInterval decodeInterval(byte[] buffer, int offset) throws CouldNotDecode {
