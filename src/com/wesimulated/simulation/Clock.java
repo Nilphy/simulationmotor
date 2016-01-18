@@ -15,6 +15,7 @@ public class Clock {
 	
 	public Clock(Date startDate, BaseExcecutor simulationMotor, TimeControllerEntity hlaFederate) {
 		this.startDate = startDate;
+		this.setCurrentDate(startDate);
 		this.simulationMotor = simulationMotor;
 		this.timeControllerEntity = hlaFederate;
 	}
