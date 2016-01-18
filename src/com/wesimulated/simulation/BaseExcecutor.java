@@ -49,7 +49,6 @@ public abstract class BaseExcecutor {
 
 	public void initClock(DateLogicalTime time, TimeControllerEntity timeControllerEntity) {
 		this.setClock(new Clock(time.getValue(), this, timeControllerEntity));
-		this.continueSimulationMotorExecution();
 	}
 
 	public void continueFromDate(DateLogicalTime time) {
