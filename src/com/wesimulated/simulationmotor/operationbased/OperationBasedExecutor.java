@@ -19,9 +19,8 @@ public abstract class OperationBasedExecutor extends BaseExcecutor {
 	}
 	
 	protected void execAPhase() {
-		BOperationCore firstOperation = bOperations.iterator().next();
-		if (firstOperation != null) {
-			this.getClock().advanceUntil(firstOperation.getStartTime());
+		if (bOperations.iterator().hasNext()) {
+			this.getClock().advanceUntil(bOperations.iterator().next().getStartTime());
 		}
 	}
 	
