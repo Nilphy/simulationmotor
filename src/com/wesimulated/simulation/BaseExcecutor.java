@@ -2,6 +2,8 @@ package com.wesimulated.simulation;
 
 import java.util.concurrent.Semaphore;
 
+import ch.qos.logback.core.util.Duration;
+
 import com.wesimulated.simulation.hla.DateLogicalTime;
 import com.wesimulated.simulation.runparameters.EndCodition;
 import com.wesimulated.simulationmotor.operationbased.TimeControllerEntity;
@@ -39,8 +41,8 @@ public abstract class BaseExcecutor {
 
 	public void continueFromDate(DateLogicalTime time) {
 		if (this.getClock() != null && this.getClock().getCurrentDate().compareTo(time.getValue()) != 0) {
-			System.out.println("Seting already setted date to clock with a different value, the difference is of new - old: "
-					+ (time.getValue().getTime() - this.getClock().getCurrentDate().getTime()));
+			Duration duration = Duration.buildByMilliseconds(time.getValue().getTime() - this.getClock().getCurrentDate().getTime());
+			System.out.println("Setting already setted date to clock with a different value, the difference is of new - old: " + duration.toString());
 		}
 		this.getClock().setCurrentDate(time.getValue());
 		this.continueSimulationMotorExecution();

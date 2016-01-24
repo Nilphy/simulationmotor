@@ -50,6 +50,11 @@ public class DateLogicalTime implements LogicalTime<DateLogicalTime, DateLogical
 	}
 
 	@Override
+	public String toString() {
+		return "DateLogicalTime [date=" + date + "]";
+	}
+
+	@Override
 	public DateLogicalTimeInterval distance(DateLogicalTime other) throws InvalidLogicalTime {
 		return new DateLogicalTimeInterval(Duration.between(this.getValue().toInstant(), other.getValue().toInstant()));
 	}
