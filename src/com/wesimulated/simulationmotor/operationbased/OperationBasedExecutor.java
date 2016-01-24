@@ -67,6 +67,7 @@ public abstract class OperationBasedExecutor extends BaseExcecutor {
 		this.bOperations.add(new BOperationCore(bOperation));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addAllBOperations(Collection<BOperation> bOperations) {
 		this.bOperations.addAll((Collection<BOperationCore>) bOperations.stream().map(bOperation -> { return new BOperationCore(bOperation); }));
 	}
@@ -75,6 +76,7 @@ public abstract class OperationBasedExecutor extends BaseExcecutor {
 		this.cOperations.add(new COperationCore(cOperation));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addAllCOperations(Collection<COperation> cOperations) {
 		this.cOperations.addAll((Collection<COperationCore>) cOperations.stream().map(cOperation -> { return new COperationCore(cOperation); }));
 	}

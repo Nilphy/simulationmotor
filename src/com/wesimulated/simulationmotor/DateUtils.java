@@ -15,7 +15,7 @@ public class DateUtils {
 		} else if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
 			cal.add(Calendar.DATE, 2);
 		} else {
-			cal.add(Calendar.DATE, 1);			
+			cal.add(Calendar.DATE, 1);
 		}
 		return cal.getTime();
 	}
