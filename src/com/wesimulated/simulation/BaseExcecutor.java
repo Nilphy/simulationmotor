@@ -6,7 +6,7 @@ import ch.qos.logback.core.util.Duration;
 
 import com.wesimulated.simulation.hla.DateLogicalTime;
 import com.wesimulated.simulation.runparameters.EndCodition;
-import com.wesimulated.simulationmotor.operationbased.TimeControllerEntity;
+import com.wesimulated.simulationmotor.des.TimeControllerEntity;
 
 public abstract class BaseExcecutor {
 	private EndCodition endCondition;

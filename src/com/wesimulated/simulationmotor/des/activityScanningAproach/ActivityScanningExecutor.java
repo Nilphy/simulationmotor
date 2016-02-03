@@ -1,9 +1,9 @@
-package com.wesimulated.simulationmotor.operationbased.activityScanningAproach;
+package com.wesimulated.simulationmotor.des.activityScanningAproach;
 
 import java.util.LinkedList;
 
 import com.wesimulated.simulation.runparameters.EndCodition;
-import com.wesimulated.simulationmotor.operationbased.OperationBasedExecutor;
+import com.wesimulated.simulationmotor.des.OperationBasedExecutor;
 
 public class ActivityScanningExecutor extends OperationBasedExecutor {
 

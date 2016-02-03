@@ -3,7 +3,7 @@ package com.wesimulated.simulation;
 import java.time.Duration;
 import java.util.Date;
 
-import com.wesimulated.simulationmotor.operationbased.TimeControllerEntity;
+import com.wesimulated.simulationmotor.des.TimeControllerEntity;
 
 public class Clock {
 	

@@ -1,10 +1,10 @@
-package com.wesimulated.simulationmotor.operationbased.threefaseaproach;
+package com.wesimulated.simulationmotor.des.threefaseaproach;
 
 import java.util.LinkedList;
 import java.util.TreeSet;
 
 import com.wesimulated.simulation.runparameters.EndCodition;
-import com.wesimulated.simulationmotor.operationbased.OperationBasedExecutor;
+import com.wesimulated.simulationmotor.des.OperationBasedExecutor;
 
 public class ThreePhaseExecutor extends OperationBasedExecutor {
 

@@ -1,4 +1,4 @@
-package com.wesimulated.simulationmotor.operationbased;
+package com.wesimulated.simulationmotor.des;
 
 public interface Entity {
 
