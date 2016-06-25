@@ -1,6 +1,6 @@
 package com.wesimulated.simulationmotor.des;
 
-public interface Entity {
+public interface Resource {
 
 	public boolean isAvailable();
 	public void setAvailable(boolean available);
