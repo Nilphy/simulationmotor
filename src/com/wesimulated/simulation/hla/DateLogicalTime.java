@@ -20,14 +20,13 @@ public class DateLogicalTime implements LogicalTime<DateLogicalTime, DateLogical
 	public static final byte ENCODED_LENGTH = Long.SIZE / 8;
 	public static final long INITIAL = 0L;
 	public static final long FINAL = Long.MAX_VALUE;
-	
-	
+
 	private final Date date;
-	
+
 	public DateLogicalTime(Date date) {
 		this.date = date;
 	}
-	
+
 	@Override
 	public DateLogicalTime add(DateLogicalTimeInterval timeToAdd) throws IllegalTimeArithmetic, InvalidLogicalTimeInterval {
 		Calendar calendar = Calendar.getInstance();
@@ -35,12 +34,12 @@ public class DateLogicalTime implements LogicalTime<DateLogicalTime, DateLogical
 		calendar.add(Calendar.MILLISECOND, Math.toIntExact(timeToAdd.getValue().toMillis()));
 		return new DateLogicalTime(calendar.getTime());
 	}
-	
+
 	@Override
 	public DateLogicalTime subtract(DateLogicalTimeInterval timeToSubstract) throws IllegalTimeArithmetic, InvalidLogicalTimeInterval {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(this.getValue());
-		calendar.add(Calendar.MILLISECOND, - Math.toIntExact(timeToSubstract.getValue().toMillis()));
+		calendar.add(Calendar.MILLISECOND, -Math.toIntExact(timeToSubstract.getValue().toMillis()));
 		return new DateLogicalTime(calendar.getTime());
 	}
 
@@ -63,18 +62,18 @@ public class DateLogicalTime implements LogicalTime<DateLogicalTime, DateLogical
 	public void encode(byte[] buffer, int offset) throws CouldNotEncode {
 		if (buffer == null) {
 			throw new IllegalArgumentException(I18n.getMessage(ExceptionMessages.ENCODE_BUFFER_IS_NULL));
-	    } else if ((buffer.length - offset) < ENCODED_LENGTH) {
-	    	throw new IllegalArgumentException(I18n.getMessage(ExceptionMessages.ENCODE_BUFFER_IS_TOO_SHORT, ENCODED_LENGTH, buffer.length - offset));
-	    }
+		} else if ((buffer.length - offset) < ENCODED_LENGTH) {
+			throw new IllegalArgumentException(I18n.getMessage(ExceptionMessages.ENCODE_BUFFER_IS_TOO_SHORT, ENCODED_LENGTH, buffer.length - offset));
+		}
 		long time = this.getValue().getTime();
-	    buffer[offset++] = (byte) (time >>> 56);
-	    buffer[offset++] = (byte) (time >>> 48);
-	    buffer[offset++] = (byte) (time >>> 40);
-	    buffer[offset++] = (byte) (time >>> 32);
-	    buffer[offset++] = (byte) (time >>> 24);
-	    buffer[offset++] = (byte) (time >>> 16);
-	    buffer[offset++] = (byte) (time >>> 8);
-	    buffer[offset] = (byte) time;
+		buffer[offset++] = (byte) (time >>> 56);
+		buffer[offset++] = (byte) (time >>> 48);
+		buffer[offset++] = (byte) (time >>> 40);
+		buffer[offset++] = (byte) (time >>> 32);
+		buffer[offset++] = (byte) (time >>> 24);
+		buffer[offset++] = (byte) (time >>> 16);
+		buffer[offset++] = (byte) (time >>> 8);
+		buffer[offset] = (byte) time;
 	}
 
 	@Override
