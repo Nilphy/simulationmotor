@@ -1,5 +1,6 @@
 package com.wesimulated.simulation;
 
+import java.util.Date;
 import java.util.concurrent.Semaphore;
 
 import ch.qos.logback.core.util.Duration;
@@ -35,16 +36,16 @@ public abstract class BaseExcecutor {
 		return endCondition.isSatisfied();
 	}
 
-	public void initClock(DateLogicalTime time, TimeControllerEntity timeControllerEntity) {
-		this.setClock(new Clock(time.getValue(), this, timeControllerEntity));
+	public void initClock(Date time, TimeControllerEntity timeControllerEntity) {
+		this.setClock(new Clock(time, this, timeControllerEntity));
 	}
 
-	public void continueFromDate(DateLogicalTime time) {
-		if (this.getClock() != null && this.getClock().getCurrentDate().compareTo(time.getValue()) != 0) {
-			Duration duration = Duration.buildByMilliseconds(time.getValue().getTime() - this.getClock().getCurrentDate().getTime());
+	public void continueFromDate(Date time) {
+		if (this.getClock() != null && this.getClock().getCurrentDate().compareTo(time) != 0) {
+			Duration duration = Duration.buildByMilliseconds(time.getTime() - this.getClock().getCurrentDate().getTime());
 			System.out.println("Setting already setted date to clock with a different value, the difference is of new - old: " + duration.toString());
 		}
-		this.getClock().setCurrentDate(time.getValue());
+		this.getClock().setCurrentDate(time);
 		this.continueSimulationMotorExecution();
 	}
 

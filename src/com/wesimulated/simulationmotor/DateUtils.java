@@ -3,8 +3,6 @@ package com.wesimulated.simulationmotor;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.wesimulated.simulation.hla.DateLogicalTime;
-
 public class DateUtils {
 
 	public static Date convertToStartOfNextLabDay(Date date) {
@@ -22,8 +20,9 @@ public class DateUtils {
 		return cal.getTime();
 	}
 
-	public static DateLogicalTime addMilis(Date startDate, float millisToAdd) {
+	public static Date addMilis(Date startDate, float millisToAdd) {
 		float startPlusAddedMillis = startDate.getTime() + millisToAdd;
-		return new DateLogicalTime(new Date((long) startPlusAddedMillis));
+		return new Date((long) startPlusAddedMillis);
+	}
 	}
 }
