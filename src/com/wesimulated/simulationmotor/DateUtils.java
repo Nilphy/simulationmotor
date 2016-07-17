@@ -24,5 +24,11 @@ public class DateUtils {
 		float startPlusAddedMillis = startDate.getTime() + millisToAdd;
 		return new Date((long) startPlusAddedMillis);
 	}
+
+	public static Date addOneDay(Date dayInProgress) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(dayInProgress);
+		c.add(Calendar.DATE, 1);
+		return c.getTime();
 	}
 }
