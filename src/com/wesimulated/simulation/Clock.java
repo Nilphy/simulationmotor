@@ -27,6 +27,10 @@ public class Clock {
 	public boolean hasThisDate(Date thisDate) {
 		return this.date.equals(thisDate);
 	}
+	
+	public boolean dateHasPassed(Date date) {
+		return this.date.compareTo(date) > 0;
+	}
 
 	public void advanceUntil(Date newDate) {
 		this.timeControllerEntity.requestTimeAdvance(newDate);
