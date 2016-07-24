@@ -5,7 +5,6 @@ import java.util.concurrent.Semaphore;
 
 import ch.qos.logback.core.util.Duration;
 
-import com.wesimulated.simulation.hla.DateLogicalTime;
 import com.wesimulated.simulation.runparameters.EndCodition;
 import com.wesimulated.simulationmotor.des.TimeControllerEntity;
 
