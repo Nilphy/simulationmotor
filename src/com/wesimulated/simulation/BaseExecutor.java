@@ -8,12 +8,12 @@ import ch.qos.logback.core.util.Duration;
 import com.wesimulated.simulation.runparameters.EndCodition;
 import com.wesimulated.simulationmotor.des.TimeControllerEntity;
 
-public abstract class BaseExcecutor {
+public abstract class BaseExecutor {
 	private EndCodition endCondition;
 	private Clock clock;
 	private Semaphore hlaWait;
 
-	public BaseExcecutor(EndCodition endCondition) {
+	public BaseExecutor(EndCodition endCondition) {
 		this.endCondition = endCondition;
 		this.hlaWait = new Semaphore(0);
 	}

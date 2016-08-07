@@ -17,11 +17,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.TreeSet;
 
-import com.wesimulated.simulation.BaseExcecutor;
+import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.Clock;
 import com.wesimulated.simulation.runparameters.EndCodition;
 
-public class ProcessBasedExecutor extends BaseExcecutor {
+public class ProcessBasedExecutor extends BaseExecutor {
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
 	private Clock clock;

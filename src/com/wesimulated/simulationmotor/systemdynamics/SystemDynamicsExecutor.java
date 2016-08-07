@@ -2,15 +2,15 @@ package com.wesimulated.simulationmotor.systemdynamics;
 
 import java.util.Collection;
 
-import com.wesimulated.simulation.BaseExcecutor;
+import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.runparameters.EndCodition;
 
-public class SystemDynamicsExcecutor extends BaseExcecutor {
+public class SystemDynamicsExecutor extends BaseExecutor {
 	private Collection<StructureAspect> stocks;
 	private Collection<StructureAspect> flows;
 	private long timeStep;
 
-	public SystemDynamicsExcecutor(EndCodition endCondition) {
+	public SystemDynamicsExecutor(EndCodition endCondition) {
 		super(endCondition);
 	}
 

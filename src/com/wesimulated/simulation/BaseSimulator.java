@@ -2,17 +2,17 @@ package com.wesimulated.simulation;
 
 public abstract class BaseSimulator {
 
-	private BaseExcecutor executor;
+	private BaseExecutor executor;
 
 	public void startExecution() {
 		this.executor.run();
 	}
 
-	public BaseExcecutor getExecutor() {
+	public BaseExecutor getExecutor() {
 		return executor;
 	}
 
-	public void setExecutor(BaseExcecutor executor) {
+	public void setExecutor(BaseExecutor executor) {
 		this.executor = executor;
 	}
 	

@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.testng.collections.CollectionUtils;
 
-import com.wesimulated.simulation.BaseExcecutor;
+import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.runparameters.EndCodition;
 
-public abstract class OperationBasedExecutor extends BaseExcecutor {
+public abstract class OperationBasedExecutor extends BaseExecutor {
 	private Collection<BOperationCore> bOperations;
 	private List<COperationCore> cOperations;
 

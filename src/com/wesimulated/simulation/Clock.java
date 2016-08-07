@@ -9,11 +9,11 @@ public class Clock {
 	
 	private Date date;
 	private Date startDate;
-	private BaseExcecutor simulationMotor;
+	private BaseExecutor simulationMotor;
 	private TimeControllerEntity timeControllerEntity;
 	
 	
-	public Clock(Date startDate, BaseExcecutor simulationMotor, TimeControllerEntity hlaFederate) {
+	public Clock(Date startDate, BaseExecutor simulationMotor, TimeControllerEntity hlaFederate) {
 		this.startDate = startDate;
 		this.setCurrentDate(startDate);
 		this.simulationMotor = simulationMotor;
