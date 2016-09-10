@@ -5,8 +5,6 @@ import java.util.Collection;
 
 import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.runparameters.EndCodition;
-import com.wesimulated.simulationmotor.systemdynamics.CoreStructureAspect.Flow;
-import com.wesimulated.simulationmotor.systemdynamics.CoreStructureAspect.Stock;
 
 public class SystemDynamicsExecutor extends BaseExecutor {
 	private Collection<CoreStructureAspect> stocks;
@@ -21,22 +19,26 @@ public class SystemDynamicsExecutor extends BaseExecutor {
 
 	@Override
 	protected void doCicle() {
-		this.calculate(stocks);
-		this.calculate(flows);
+		this.calculate(this.getStocks());
+		this.calculate(this.getFlows());
 	}
 
 	private void calculate(Collection<CoreStructureAspect> structureAspects) {
 		for (CoreStructureAspect structureAspect : structureAspects) {
-			structureAspect.calculateNext(timeStep);
+			structureAspect.calculate(this.getTimeStep());
 		}
 	}
 
-	public void addStock(Stock stock) {
-		this.getStocks().add(new CoreStructureAspect(stock));
+	private double getTimeStep() {
+		return this.timeStep;
 	}
-	
-	public void addFlow(Flow flow) {
-		this.getFlows().add(new CoreStructureAspect(flow));
+
+	public void add(Stock stock) {
+		this.getStocks().add(stock);
+	}
+
+	public void add(Flow flow) {
+		this.getFlows().add(flow);
 	}
 
 	public Collection<CoreStructureAspect> getStocks() {
@@ -46,4 +48,13 @@ public class SystemDynamicsExecutor extends BaseExecutor {
 	public Collection<CoreStructureAspect> getFlows() {
 		return this.flows;
 	}
+
+	public void addStocks(Collection<Stock> stocks) {
+		this.stocks.addAll(stocks);
+	}
+
+	public void addFlows(Collection<Flow> flows) {
+		this.flows.addAll(flows);
+	}
+
 }
