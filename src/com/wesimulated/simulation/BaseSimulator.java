@@ -4,6 +4,10 @@ public abstract class BaseSimulator {
 
 	private BaseExecutor executor;
 
+	public BaseSimulator(BaseExecutor executor) {
+		this.executor = executor;
+	}
+
 	public void startExecution() {
 		this.executor.run();
 	}
@@ -15,7 +19,7 @@ public abstract class BaseSimulator {
 	public void setExecutor(BaseExecutor executor) {
 		this.executor = executor;
 	}
-	
+
 	public boolean isRunning() {
 		return !this.getExecutor().isSimulationEnd();
 	}
