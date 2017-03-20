@@ -4,6 +4,10 @@ import com.wesimulated.simulation.BaseSimulator;
 
 public abstract class SystemDynamicsSimulator extends BaseSimulator {
 
+	public SystemDynamicsSimulator(SystemDynamicsExecutor executor) {
+		super(executor);
+	}
+
 	public SystemDynamicsExecutor getSystemDynamicsExecutor() {
 		return (SystemDynamicsExecutor) this.getExecutor();
 	}
