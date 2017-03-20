@@ -83,4 +83,36 @@ public class ProcessBasedExecutor extends BaseExecutor {
 		this.clock.advanceUntil(nextEventTime);
 		return nextEventTime;
 	}
-}	
+
+	public void registerEntity(Entity entity) {
+		if (entity.isUnconditionalyDelayed()) {
+			this.getFutureEventsList().add(entity);
+		} else {
+			this.getCurrentEventsList().add(entity);
+		}
+	}
+
+	public Collection<Entity> getFutureEventsList() {
+		return futureEventsList;
+	}
+
+	public void setFutureEventsList(Collection<Entity> futureEventsList) {
+		this.futureEventsList = futureEventsList;
+	}
+
+	public Collection<Entity> getCurrentEventsList() {
+		return currentEventsList;
+	}
+
+	public void setCurrentEventsList(Collection<Entity> currentEventsList) {
+		this.currentEventsList = currentEventsList;
+	}
+
+	public Clock getClock() {
+		return clock;
+	}
+
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
+}
