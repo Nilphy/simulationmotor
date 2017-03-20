@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class DateUtils {
 
+	public static final int MILLIES_IN_MINUTE = 60000;
+
 	public static Date convertToStartOfNextLabDay(Date date) {
 		Calendar calOfDate = Calendar.getInstance();
 		calOfDate.setTime(date);
@@ -30,5 +32,9 @@ public class DateUtils {
 		c.setTime(dayInProgress);
 		c.add(Calendar.DATE, 1);
 		return c.getTime();
+	}
+	
+	public static int calculateDifferenceInMinutes(Date oldest, Date newest) {
+		return (int) (newest.getTime() - oldest.getTime()) / MILLIES_IN_MINUTE;
 	}
 }
