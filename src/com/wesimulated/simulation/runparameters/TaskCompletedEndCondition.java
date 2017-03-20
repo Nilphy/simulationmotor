@@ -1,6 +1,6 @@
 package com.wesimulated.simulation.runparameters;
 
-public class TaskCompletedEndCondition extends EndCodition {
+public class TaskCompletedEndCondition extends EndCondition {
 
 	private CompletableTask completableTask;
 

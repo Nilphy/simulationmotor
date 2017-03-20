@@ -8,13 +8,13 @@ import java.util.List;
 import org.testng.collections.CollectionUtils;
 
 import com.wesimulated.simulation.BaseExecutor;
-import com.wesimulated.simulation.runparameters.EndCodition;
+import com.wesimulated.simulation.runparameters.EndCondition;
 
 public abstract class OperationBasedExecutor extends BaseExecutor {
 	private Collection<BOperationCore> bOperations;
 	private List<COperationCore> cOperations;
 
-	public OperationBasedExecutor(EndCodition endCondition) {
+	public OperationBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
 	}
 

@@ -5,15 +5,15 @@ import java.util.concurrent.Semaphore;
 
 import ch.qos.logback.core.util.Duration;
 
-import com.wesimulated.simulation.runparameters.EndCodition;
+import com.wesimulated.simulation.runparameters.EndCondition;
 import com.wesimulated.simulationmotor.des.TimeControllerEntity;
 
 public abstract class BaseExecutor {
-	private EndCodition endCondition;
+	private EndCondition endCondition;
 	private Clock clock;
 	private Semaphore hlaWait;
 
-	public BaseExecutor(EndCodition endCondition) {
+	public BaseExecutor(EndCondition endCondition) {
 		this.endCondition = endCondition;
 		this.hlaWait = new Semaphore(0);
 	}

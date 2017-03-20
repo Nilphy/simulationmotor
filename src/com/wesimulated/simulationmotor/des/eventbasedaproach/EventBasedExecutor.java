@@ -2,12 +2,12 @@ package com.wesimulated.simulationmotor.des.eventbasedaproach;
 
 import java.util.TreeSet;
 
-import com.wesimulated.simulation.runparameters.EndCodition;
+import com.wesimulated.simulation.runparameters.EndCondition;
 import com.wesimulated.simulationmotor.des.OperationBasedExecutor;
 
 public class EventBasedExecutor extends OperationBasedExecutor {
 
-	public EventBasedExecutor(EndCodition endCondition) {
+	public EventBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
 		this.setBOperations(new TreeSet<>());
 	}

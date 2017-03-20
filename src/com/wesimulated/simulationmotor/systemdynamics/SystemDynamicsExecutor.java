@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.wesimulated.simulation.BaseExecutor;
-import com.wesimulated.simulation.runparameters.EndCodition;
+import com.wesimulated.simulation.runparameters.EndCondition;
 
 public class SystemDynamicsExecutor extends BaseExecutor {
 	private Collection<CoreStructureAspect> stocks;
 	private Collection<CoreStructureAspect> flows;
 	private long timeStep;
 
-	public SystemDynamicsExecutor(EndCodition endCondition) {
+	public SystemDynamicsExecutor(EndCondition endCondition) {
 		super(endCondition);
 		this.stocks = new ArrayList<>();
 		this.flows = new ArrayList<>();

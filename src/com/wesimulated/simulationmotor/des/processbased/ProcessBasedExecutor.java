@@ -19,14 +19,15 @@ import java.util.TreeSet;
 
 import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.Clock;
-import com.wesimulated.simulation.runparameters.EndCodition;
+import com.wesimulated.simulation.runparameters.EndCondition;
 
 public class ProcessBasedExecutor extends BaseExecutor {
+
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
 	private Clock clock;
-	
-	public ProcessBasedExecutor(EndCodition endCondition) {
+
+	public ProcessBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
 		this.futureEventsList = new TreeSet<Entity>();
 		this.currentEventsList = new LinkedList<Entity>();

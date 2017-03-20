@@ -4,7 +4,7 @@ import java.time.Duration;
 
 import com.wesimulated.simulation.Clock;
 
-public class DurationEndCondition extends EndCodition {
+public class DurationEndCondition extends EndCondition {
 
 	private Duration duration;
 	private Clock clock;
