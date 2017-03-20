@@ -39,15 +39,15 @@ public class ProcessBasedExecutor extends BaseExecutor {
 			Date nextEventTime = this.futureEventsScan();
 			this.moveBetweenLists(nextEventTime);
 			this.currentEventsScan();
-		} catch (LogicalTimeAlreadyPassed | InvalidLogicalTime | InTimeAdvancingState | RequestForTimeRegulationPending | RequestForTimeConstrainedPending | SaveInProgress | RestoreInProgress
-				| FederateNotExecutionMember | NotConnected | RTIinternalError | InterruptedException e) {
+		} catch (LogicalTimeAlreadyPassed | InvalidLogicalTime | InTimeAdvancingState | RequestForTimeRegulationPending | RequestForTimeConstrainedPending | SaveInProgress | RestoreInProgress | FederateNotExecutionMember | NotConnected | RTIinternalError | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private void currentEventsScan() {
-		if (currentEventsList.isEmpty()) return;
+		if (currentEventsList.isEmpty())
+			return;
 		Collection<Entity> entitiesToRemove = new ArrayList<>();
 		for (Entity entity : currentEventsList) {
 			entity.process();
