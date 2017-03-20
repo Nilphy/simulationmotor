@@ -9,15 +9,15 @@ public class Clock {
 	
 	private Date date;
 	private Date startDate;
-	private BaseExecutor simulationMotor;
+	private BaseExecutor simulationExecutor;
 	private TimeControllerEntity timeControllerEntity;
 	
 	
-	public Clock(Date startDate, BaseExecutor simulationMotor, TimeControllerEntity hlaFederate) {
+	public Clock(Date startDate, BaseExecutor simulationExecutor, TimeControllerEntity timeControllerEntity) {
 		this.startDate = startDate;
 		this.setCurrentDate(startDate);
-		this.simulationMotor = simulationMotor;
-		this.timeControllerEntity = hlaFederate;
+		this.simulationExecutor = simulationExecutor;
+		this.timeControllerEntity = timeControllerEntity;
 	}
 	
 	public boolean durationHasPassed(Duration duration) {
@@ -34,7 +34,7 @@ public class Clock {
 
 	public void advanceUntil(Date newDate) {
 		this.timeControllerEntity.requestTimeAdvance(newDate);
-		this.simulationMotor.pauseSimulationMotorExecution();
+		this.simulationExecutor.pauseSimulationMotorExecution();
 	}
 
 	public Date getCurrentDate() {
