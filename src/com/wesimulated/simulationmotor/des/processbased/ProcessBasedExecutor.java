@@ -70,7 +70,7 @@ public class ProcessBasedExecutor extends BaseExecutor {
 				entitiesToRemove.add(entity);
 				currentEventsList.add(entity);
 			} else if (comparisonResult > 0) {
-				break;
+				continue;
 			}
 		}
 		for (Entity entity : entitiesToRemove) {
