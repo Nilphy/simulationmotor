@@ -2,14 +2,9 @@ package com.wesimulated.simulationmotor.des.processbased;
 
 import java.util.Date;
 
-public abstract class Entity implements Comparable<Entity> {
+public abstract class Entity {
 
 	private Date reActivationTime;
-	
-	@Override
-	public int compareTo(Entity o) {
-		return this.getReActivationTime().compareTo(o.getReActivationTime());
-	}
 
 	public Date getReActivationTime() {
 		return reActivationTime;
