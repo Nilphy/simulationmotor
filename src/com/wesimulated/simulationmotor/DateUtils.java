@@ -37,4 +37,11 @@ public class DateUtils {
 	public static int calculateDifferenceInMinutes(Date oldest, Date newest) {
 		return (int) (newest.getTime() - oldest.getTime()) / MILLIES_IN_MINUTE;
 	}
+
+	public static Date calculateProportionalDateInPeriod(Date periodStart, Date periodEnd, float proportion) {
+		long millisStartDate = periodStart.getTime();
+		long millisEndDate = periodEnd.getTime();
+		long difference = millisEndDate - millisStartDate;
+		return new Date((long) (difference * proportion) + millisStartDate);
+	}
 }
