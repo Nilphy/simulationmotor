@@ -8,9 +8,9 @@ public class ThreePhaseExecutor extends OperationBasedExecutor {
 	public ThreePhaseExecutor(EndCondition endCondition) {
 		super(endCondition);
 	}
-	
+
 	@Override
-	public void doCicle() {
+	public void doCicle() throws InterruptedException {
 		this.execAPhase();
 		this.execBPhase();
 		this.execCPhase();

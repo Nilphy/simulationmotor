@@ -10,7 +10,7 @@ public class EventBasedExecutor extends OperationBasedExecutor {
 	}
 
 	@Override
-	protected void doCicle() {
+	protected void doCicle() throws InterruptedException {
 		this.execAPhase();
 		this.execBPhase();		
 	}

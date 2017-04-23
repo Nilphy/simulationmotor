@@ -12,13 +12,15 @@ public abstract class BaseExecutor {
 	private EndCondition endCondition;
 	private Clock clock;
 	private Semaphore hlaWait;
+	private boolean interrupted;
 
 	public BaseExecutor(EndCondition endCondition) {
 		this.endCondition = endCondition;
 		this.hlaWait = new Semaphore(0);
+		this.interrupted = false;
 	}
 
-	protected abstract void doCicle();
+	protected abstract void doCicle() throws InterruptedException;
 
 	public void run() {
 		new Thread(() -> {
@@ -26,13 +28,18 @@ public abstract class BaseExecutor {
 				this.pauseSimulationMotorExecution();
 			}
 			while (!this.isSimulationEnd()) {
-				this.doCicle();
+				try {
+					this.doCicle();
+				} catch (InterruptedException e) {
+					this.interrupted = true;
+					e.printStackTrace();
+				}
 			}
 		}).start();
 	}
 
 	public boolean isSimulationEnd() {
-		return endCondition.isSatisfied();
+		return endCondition.isSatisfied() || this.interrupted;
 	}
 
 	public void initClock(Date time, TimeControllerEntity timeControllerEntity) {

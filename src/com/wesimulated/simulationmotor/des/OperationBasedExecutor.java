@@ -14,7 +14,7 @@ import com.wesimulated.simulation.BaseExecutor;
 import com.wesimulated.simulation.runparameters.EndCondition;
 
 public abstract class OperationBasedExecutor extends BaseExecutor {
-	private Collection<BOperationCore> bOperations;
+	private PriorityBlockingQueue<BOperationCore> bOperations;
 	private List<COperationCore> cOperations;
 
 	public OperationBasedExecutor(EndCondition endCondition) {
@@ -45,9 +45,10 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 		}));
 	}
 
-	protected void execAPhase() {
-		if (bOperations.iterator().hasNext()) {
-			this.getClock().advanceUntil(bOperations.iterator().next().getStartTime());
+	protected void execAPhase() throws InterruptedException {
+		BOperationCore bOperation = bOperations.take();
+		if (bOperation != null) {
+			this.getClock().advanceUntil(bOperation.getStartTime());
 		}
 	}
 
@@ -96,7 +97,7 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 		}).collect(Collectors.toList());
 	}
 
-	protected void setBOperations(Collection<BOperationCore> emptyCollectionOfBOperations) {
+	protected void setBOperations(PriorityBlockingQueue<BOperationCore> emptyCollectionOfBOperations) {
 		this.bOperations = emptyCollectionOfBOperations;
 	}
 
