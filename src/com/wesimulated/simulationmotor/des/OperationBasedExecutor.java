@@ -3,7 +3,9 @@ package com.wesimulated.simulationmotor.des;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.stream.Collectors;
 
 import org.testng.collections.CollectionUtils;
@@ -17,6 +19,8 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 
 	public OperationBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
+		this.setBOperations(new PriorityBlockingQueue<>());
+		this.setCOperations(new LinkedList<>());
 	}
 
 	public void addBOperation(BOperation bOperation) {
