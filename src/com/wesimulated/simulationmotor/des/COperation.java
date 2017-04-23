@@ -2,7 +2,6 @@ package com.wesimulated.simulationmotor.des;
 
 import java.util.Date;
 
-
 public abstract class COperation {
 
 	public abstract boolean testIfRequirementsAreMet();
