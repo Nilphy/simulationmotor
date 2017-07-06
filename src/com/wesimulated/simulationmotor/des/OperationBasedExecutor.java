@@ -104,4 +104,14 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 	private void orderCOperationsBeforeTestThemForExcecution() {
 		this.cOperations.sort(Comparator.comparing(COperationCore::getNegativePriority));
 	}
+
+	public void removeFirstBOperation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void reprogramCurrentCOperation() {
+		// TODO Auto-generated method stub
+		
+	}
 }
