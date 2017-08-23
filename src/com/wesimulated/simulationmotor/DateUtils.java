@@ -6,6 +6,10 @@ import java.util.Date;
 public class DateUtils {
 
 	public static final int MILLIES_IN_MINUTE = 60000;
+	private static int START_HOUR = 9;
+	private static int START_MINUTE = 0;
+	private static int END_HOUR = 18;
+	private static int END_MINUTE = 0;
 
 	public static Date convertToStartOfNextLabDay(Date date) {
 		Calendar calOfDate = Calendar.getInstance();
@@ -43,5 +47,32 @@ public class DateUtils {
 		long millisEndDate = periodEnd.getTime();
 		long difference = millisEndDate - millisStartDate;
 		return new Date((long) (difference * proportion) + millisStartDate);
+	}
+
+	public static Date findEndOfLaboralDay(Date actualDate) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(actualDate);
+		calendar.set(Calendar.HOUR_OF_DAY, END_HOUR);
+		calendar.set(Calendar.MINUTE, END_MINUTE);
+		return calendar.getTime();
+	}
+
+	public static Date findStartOfNextLaboralDay(Date actualDate) {
+		Date tomorrow = addOneDay(actualDate);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(tomorrow);
+		calendar.set(Calendar.HOUR_OF_DAY, START_HOUR);
+		calendar.set(Calendar.MINUTE, START_MINUTE);
+		return calendar.getTime();
+	}
+	
+	public static void changeStartHour(int hour, int minute) {
+		START_HOUR = hour;
+		START_MINUTE = minute;
+	}
+	
+	public static void changeEndHour(int hour, int minute) {
+		END_HOUR = hour;
+		END_MINUTE = minute;
 	}
 }
