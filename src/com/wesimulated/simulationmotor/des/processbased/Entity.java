@@ -20,7 +20,8 @@ public abstract class Entity {
 	}
 
 	protected abstract Date doProcess();
-
+	public abstract void acceptInterruption(Date interruptionDate);
+	
 	public boolean isUnconditionalyDelayed() {
 		return this.reActivationTime != null;
 	}
