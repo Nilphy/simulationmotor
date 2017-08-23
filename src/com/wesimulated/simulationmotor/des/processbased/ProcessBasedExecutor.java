@@ -26,6 +26,7 @@ public class ProcessBasedExecutor extends BaseExecutor {
 	private Collection<Entity> futureEventsList;
 	private Collection<Entity> currentEventsList;
 	private Clock clock;
+	private Date nextEventTime;
 
 	public ProcessBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
@@ -36,11 +37,11 @@ public class ProcessBasedExecutor extends BaseExecutor {
 	@Override
 	protected void doCicle() {
 		try {
-			Date nextEventTime = this.futureEventsScan();
+			this.nextEventTime = this.futureEventsScan();
 			this.moveBetweenLists(nextEventTime);
 			this.currentEventsScan();
 		} catch (LogicalTimeAlreadyPassed | InvalidLogicalTime | InTimeAdvancingState | RequestForTimeRegulationPending | RequestForTimeConstrainedPending | SaveInProgress | RestoreInProgress | FederateNotExecutionMember | NotConnected | RTIinternalError | InterruptedException e) {
-			// TODO Auto-generated catch block
+			// TODO error handling
 			e.printStackTrace();
 		}
 	}
@@ -114,5 +115,9 @@ public class ProcessBasedExecutor extends BaseExecutor {
 
 	public void setClock(Clock clock) {
 		this.clock = clock;
+	}
+
+	public Date getNextEventTime() {
+		return this.nextEventTime;
 	}
 }
