@@ -33,7 +33,7 @@ public class ActivityScanningExecutor extends OperationBasedExecutor {
 		Date nextDate = null;
 		for (COperation cOperation : this.getCOperations()) {
 			if (cOperation.dateOfOccurrenceIsBetween(actualDate, nextDate)) {
-				nextDate = cOperation.getDateOfOccurrence();
+				nextDate = cOperation.getDateOfOccurrence(actualDate);
 			}
 		}
 		return nextDate;

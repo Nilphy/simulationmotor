@@ -8,16 +8,16 @@ public abstract class COperation {
 
 	public abstract void doAction();
 
-	public abstract Date getDateOfOccurrence();
+	public abstract Date getDateOfOccurrence(Date actualDate);
 
 	public boolean dateOfOccurrenceIsBetween(Date actualDate, Date nextDate) {
-		if (this.getDateOfOccurrence() == null) {
+		if (this.getDateOfOccurrence(actualDate) == null) {
 			return false;
 		}
 		if (nextDate == null) {
 			return true;
 		}
-		if (this.getDateOfOccurrence().before(actualDate) && this.getDateOfOccurrence().after(nextDate)) {
+		if (this.getDateOfOccurrence(actualDate).before(actualDate) && this.getDateOfOccurrence(actualDate).after(nextDate)) {
 			return true;
 		}
 		return false;
