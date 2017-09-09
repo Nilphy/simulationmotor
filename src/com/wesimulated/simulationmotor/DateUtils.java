@@ -5,7 +5,8 @@ import java.util.Date;
 
 public class DateUtils {
 
-	public static final int MILLIES_IN_MINUTE = 60000;
+	public static final int MILLIES_IN_MINUTE = 1000 * 60;
+	private static final int MILLIES_IN_DAY = MILLIES_IN_MINUTE * 60 * 24;
 	private static int START_HOUR = 9;
 	private static int START_MINUTE = 0;
 	private static int END_HOUR = 18;
@@ -37,9 +38,13 @@ public class DateUtils {
 		c.add(Calendar.DATE, 1);
 		return c.getTime();
 	}
-	
+
 	public static int calculateDifferenceInMinutes(Date oldest, Date newest) {
 		return (int) (newest.getTime() - oldest.getTime()) / MILLIES_IN_MINUTE;
+	}
+
+	public static int calculateDifferenceInDays(Date oldest, Date newest) {
+		return (int) (newest.getTime() - oldest.getTime()) / MILLIES_IN_DAY;
 	}
 
 	public static Date calculateProportionalDateInPeriod(Date periodStart, Date periodEnd, float proportion) {
@@ -65,14 +70,15 @@ public class DateUtils {
 		calendar.set(Calendar.MINUTE, START_MINUTE);
 		return calendar.getTime();
 	}
-	
+
 	public static void changeStartHour(int hour, int minute) {
 		START_HOUR = hour;
 		START_MINUTE = minute;
 	}
-	
+
 	public static void changeEndHour(int hour, int minute) {
 		END_HOUR = hour;
 		END_MINUTE = minute;
 	}
+
 }
