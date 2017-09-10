@@ -1,5 +1,6 @@
 package com.wesimulated.simulationmotor.des;
 
+
 class COperationCore {
 
 	private COperation operation;

@@ -2,7 +2,7 @@ package com.wesimulated.simulationmotor.des;
 
 import java.util.Date;
 
-public abstract class COperation {
+public abstract class COperation implements Operation {
 
 	public abstract boolean testIfRequirementsAreMet();
 
@@ -21,5 +21,5 @@ public abstract class COperation {
 			return true;
 		}
 		return false;
-	};
+	}
 }

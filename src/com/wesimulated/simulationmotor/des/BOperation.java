@@ -2,9 +2,23 @@ package com.wesimulated.simulationmotor.des;
 
 import java.util.Date;
 
-public interface BOperation {
+public abstract class BOperation implements Operation {
 
-	public void doAction();
+	private Operation originalOperation;
 
-	public Date getStartTime();
+	public BOperation(Operation originalOperation) {
+		this.originalOperation = originalOperation;
+	}
+
+	public abstract void doAction();
+
+	public abstract Date getStartTime();
+
+	public Operation getOriginalOperation() {
+		return this.originalOperation;
+	}
+
+	public void setOriginalOperation(Operation operation) {
+		this.originalOperation = operation;
+	}
 }

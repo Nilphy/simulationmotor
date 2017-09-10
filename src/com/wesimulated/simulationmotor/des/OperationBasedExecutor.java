@@ -16,6 +16,7 @@ import com.wesimulated.simulation.runparameters.EndCondition;
 public abstract class OperationBasedExecutor extends BaseExecutor {
 	private PriorityBlockingQueue<BOperationCore> bOperations;
 	private List<COperationCore> cOperations;
+	private COperationCore currentCOperation;
 
 	public OperationBasedExecutor(EndCondition endCondition) {
 		super(endCondition);
@@ -73,6 +74,7 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 		orderCOperationsBeforeTestThemForExcecution();
 		for (COperationCore cOperation : cOperations) {
 			if (cOperation.testIfRequirementsAreMet()) {
+				this.setCurrentCOperation(cOperation);
 				cOperation.doAction();
 				operationsToRemove.add(cOperation);
 			}
@@ -101,17 +103,38 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 		this.bOperations = emptyCollectionOfBOperations;
 	}
 
+	protected List<BOperation> getBOperations() {
+		return this.bOperations.stream().map((BOperationCore bOperation) -> {
+			return bOperation.getInnerOperation();
+		}).collect(Collectors.toList());
+	}
+
 	private void orderCOperationsBeforeTestThemForExcecution() {
 		this.cOperations.sort(Comparator.comparing(COperationCore::getNegativePriority));
 	}
 
-	public void removeFirstBOperation() {
-		// TODO Auto-generated method stub
-		
 	}
 
+	public void removeEndOfThisTask() {
+		BOperation operationToRemove = null;
+		for (BOperation operation : this.getBOperations()) {
+			if (this.getCurrentCOperation().equals(operation.getOriginalOperation())) {
+				operationToRemove = operation;
+				break;
+			}
+		}
+		if (operationToRemove != null) {
+			this.getBOperations().remove(operationToRemove);
+		}
+	}
 	public void reprogramCurrentCOperation() {
 		// TODO Auto-generated method stub
 		
+	public COperationCore getCurrentCOperation() {
+		return currentCOperation;
+	}
+
+	public void setCurrentCOperation(COperationCore currentCOperation) {
+		this.currentCOperation = currentCOperation;
 	}
 }
