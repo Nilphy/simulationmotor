@@ -113,6 +113,9 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 		this.cOperations.sort(Comparator.comparing(COperationCore::getNegativePriority));
 	}
 
+	public void reprogramCurrentCOperation() {
+		this.cOperations.add(this.getCurrentCOperation());
+		this.setCurrentCOperation(null);
 	}
 
 	public void removeEndOfThisTask() {
@@ -127,9 +130,7 @@ public abstract class OperationBasedExecutor extends BaseExecutor {
 			this.getBOperations().remove(operationToRemove);
 		}
 	}
-	public void reprogramCurrentCOperation() {
-		// TODO Auto-generated method stub
-		
+
 	public COperationCore getCurrentCOperation() {
 		return currentCOperation;
 	}
