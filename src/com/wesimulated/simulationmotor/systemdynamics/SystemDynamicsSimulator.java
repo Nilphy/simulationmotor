@@ -2,26 +2,22 @@ package com.wesimulated.simulationmotor.systemdynamics;
 
 import com.wesimulated.simulation.BaseSimulator;
 
-public abstract class SystemDynamicsSimulator extends BaseSimulator {
+public abstract class SystemDynamicsSimulator extends BaseSimulator<SystemDynamicsExecutor> {
 
 	public SystemDynamicsSimulator(SystemDynamicsExecutor executor) {
 		super(executor);
 	}
 
-	public SystemDynamicsExecutor getSystemDynamicsExecutor() {
-		return (SystemDynamicsExecutor) this.getExecutor();
-	}
-
 	public void register(Module module) {
-		this.getSystemDynamicsExecutor().addFlows(module.getFlows());
-		this.getSystemDynamicsExecutor().addStocks(module.getStocks());
+		this.getExecutor().addFlows(module.getFlows());
+		this.getExecutor().addStocks(module.getStocks());
 	}
 
 	public void register(Stock stock) {
-		this.getSystemDynamicsExecutor().add(stock);
+		this.getExecutor().add(stock);
 	}
 
 	public void register(Flow flow) {
-		this.getSystemDynamicsExecutor().add(flow);
+		this.getExecutor().add(flow);
 	}
 }

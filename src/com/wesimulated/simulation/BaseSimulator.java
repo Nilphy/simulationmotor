@@ -1,10 +1,12 @@
 package com.wesimulated.simulation;
 
-public abstract class BaseSimulator {
+import java.util.Date;
 
-	private BaseExecutor executor;
+public abstract class BaseSimulator<T extends BaseExecutor> {
 
-	public BaseSimulator(BaseExecutor executor) {
+	private T executor;
+
+	public BaseSimulator(T executor) {
 		this.executor = executor;
 	}
 
@@ -12,15 +14,20 @@ public abstract class BaseSimulator {
 		this.executor.run();
 	}
 
-	public BaseExecutor getExecutor() {
+	public T getExecutor() {
 		return executor;
 	}
 
-	public void setExecutor(BaseExecutor executor) {
+	public void setExecutor(T executor) {
 		this.executor = executor;
 	}
 
 	public boolean isRunning() {
 		return !this.getExecutor().isSimulationEnd();
 	}
+
+	public Date getCurrentDate() {
+		return this.getExecutor().getClock().getCurrentDate();
+	}
+
 }
