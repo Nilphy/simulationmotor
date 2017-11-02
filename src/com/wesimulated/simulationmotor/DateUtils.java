@@ -1,5 +1,6 @@
 package com.wesimulated.simulationmotor;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -83,6 +84,15 @@ public class DateUtils {
 	public static void changeEndHour(int hour, int minute) {
 		END_HOUR = hour;
 		END_MINUTE = minute;
+	}
+
+	public static String asLog(Date date) {
+		Date logDate = date;
+		if (date == null) {
+			logDate = new Date();
+		}
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd  hh:mm");
+		return formatter.format(logDate);
 	}
 
 	public static Date asDate(LocalDate localDate) {
