@@ -2,9 +2,9 @@ package com.wesimulated.simulation.runparameters;
 
 public class TaskCompletedEndCondition extends EndCondition {
 
-	private CompletableTask completableTask;
+	private Completable completableTask;
 
-	public TaskCompletedEndCondition(CompletableTask completableTask) {
+	public TaskCompletedEndCondition(Completable completableTask) {
 		this.completableTask = completableTask;
 	}
 	
