@@ -8,9 +8,14 @@ import com.wesimulated.simulationmotor.des.COperation;
 import com.wesimulated.simulationmotor.des.OperationBasedExecutor;
 
 /**
- * The activity scaning aproach represent all events as operations similar to the COperations of the three phase approach
- * The BOperations just check if the date is due to know if it can be executed
+ * En un simulador de tipo "Activity Scanning" todas las operaciones son
+ * operaciones de tipo C. Con una cabecera para evaluar si se cumplieron los
+ * requerimientos para ejecutar la operación...
  * 
+ * Es menos eficiente que el de tipo "three phase" porque no se aprovecha la
+ * ventaja de que se sabe que hay tareas que ocurren en un momento preciso y no
+ * hay que estar verificando en todos los momentos en que se ejecutan tasks.
+ *
  * @author Carolina
  *
  */
@@ -18,7 +23,7 @@ public class ActivityScanningExecutor extends OperationBasedExecutor {
 
 	public ActivityScanningExecutor(EndCondition endCondition) {
 		super(endCondition);
-		this.setCOperations(new LinkedList<>());	
+		this.setCOperations(new LinkedList<>());
 	}
 
 	@Override
