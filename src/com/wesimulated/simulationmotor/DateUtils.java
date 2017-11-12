@@ -1,5 +1,6 @@
 package com.wesimulated.simulationmotor;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ public class DateUtils {
 
 	public static final int MILLIES_IN_MINUTE = 1000 * 60;
 	private static final int MILLIES_IN_DAY = MILLIES_IN_MINUTE * 60 * 24;
+	private static final int MILLIES_IN_MONTH = MILLIES_IN_DAY * 30;
 	private static int START_HOUR = 9;
 	private static int START_MINUTE = 0;
 	private static int END_HOUR = 18;
@@ -50,6 +52,10 @@ public class DateUtils {
 
 	public static int calculateDifferenceInDays(Date oldest, Date newest) {
 		return (int) (newest.getTime() - oldest.getTime()) / MILLIES_IN_DAY;
+	}
+
+	public static long calculateDifferenceInMonths(Date oldest, Date newest) {
+		return (newest.getTime() - oldest.getTime()) / MILLIES_IN_MONTH;
 	}
 
 	public static Date calculateProportionalDateInPeriod(Date periodStart, Date periodEnd, float proportion) {
@@ -109,5 +115,14 @@ public class DateUtils {
 
 	public static LocalDateTime asLocalDateTime(Date date) {
 		return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+	}
+
+	public static Date dayStringToDate(String stringDay) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			return formatter.parse(stringDay);
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
